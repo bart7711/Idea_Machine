@@ -18,6 +18,14 @@ public class ActivityServiceImpl implements ActivityServiceInterface {
     }
 
     @Override
+    public List<Activity> getAll() {return activityRepo.findAll();}
+
+    @Override
+    public Activity getById(int id) {
+        return activityRepo.findById(id).orElseThrow(()-> new ResourceNotFoundException("Activity with id = "+id+ " doesn't exist"));
+    }
+
+    @Override
     public Activity getRandomActivity() {
         Random random = new Random();
         List<Activity> activityList = activityRepo.findAll();
