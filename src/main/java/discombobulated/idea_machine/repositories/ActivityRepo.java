@@ -6,4 +6,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface ActivityRepo extends JpaRepository<Activity, Integer> {
+    boolean existsByActivity(String activity);
 }
