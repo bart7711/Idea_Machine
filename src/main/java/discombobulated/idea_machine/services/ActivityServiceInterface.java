@@ -2,6 +2,7 @@ package discombobulated.idea_machine.services;
 
 import discombobulated.idea_machine.entities.Activity;
 
+import java.io.IOException;
 import java.util.List;
 
 public interface ActivityServiceInterface {
@@ -11,4 +12,5 @@ public interface ActivityServiceInterface {
     Activity createActivity(Activity activity);
     void deleteActivity(int id);
     Activity updateActivity(int id, Activity activity);
+    String getImage(Activity activity);
 }

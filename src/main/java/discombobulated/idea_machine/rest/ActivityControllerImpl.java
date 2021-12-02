@@ -2,6 +2,7 @@ package discombobulated.idea_machine.rest;
 
 import discombobulated.idea_machine.dtos.ActivityDTO;
 import discombobulated.idea_machine.dtos.converter.DTOConverter;
+import discombobulated.idea_machine.entities.Activity;
 import discombobulated.idea_machine.services.ActivityServiceInterface;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -34,6 +35,8 @@ public class ActivityControllerImpl implements ActivityControllerInterface {
 
     @Override
     public ActivityDTO getRandom() {
+        Activity activity = activityService.getRandomActivity();
+        activityService.getImage(activity);
         return dtoConverter.convertToActivityDTO(activityService.getRandomActivity());
     }
 

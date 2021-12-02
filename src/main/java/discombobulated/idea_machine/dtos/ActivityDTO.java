@@ -21,4 +21,5 @@ public class ActivityDTO {
     String duration;
     boolean kidFriendly;
     String link;
+    String imageUrl;
 }
