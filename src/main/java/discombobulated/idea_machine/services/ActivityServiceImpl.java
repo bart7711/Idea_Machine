@@ -138,7 +138,7 @@ public class ActivityServiceImpl implements ActivityServiceInterface {
 
         Random random = new Random();
         int maxValue = activityList.size();
-        int randomIndex = random.nextInt(0, maxValue );
+        int randomIndex = random.nextInt( maxValue );
         return activityList.get(randomIndex);
 
     }
