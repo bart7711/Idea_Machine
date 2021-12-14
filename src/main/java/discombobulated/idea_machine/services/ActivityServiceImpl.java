@@ -115,4 +115,31 @@ public class ActivityServiceImpl implements ActivityServiceInterface {
 
         return imageUrl;
     }
+
+    @Override
+    public Activity getRandomWithFilter(String type, Integer participantsMin, Integer participantsMax, Double priceMin, Double priceMax, String accessibility, String duration) {
+        List<Activity> activityList = activityRepo.findAll();
+
+        if(type != null){
+            activityList.removeIf(activity -> !activity.getType().equals(type));
+        }
+        if(participantsMin != null && participantsMax != null) {
+            activityList.removeIf(activity -> !(activity.getParticipants() >= participantsMin && activity.getParticipants() <= participantsMax));
+        }
+        if (priceMin != null && priceMax != null) {
+            activityList.removeIf(activity -> !(activity.getPrice() >= priceMin && activity.getPrice() <= priceMax));
+        }
+        if(accessibility != null){
+            activityList.removeIf(activity -> !activity.getAccessibility().equals(accessibility));
+        }
+        if(duration != null){
+            activityList.removeIf(activity -> !activity.getDuration().equals(duration));
+        }
+
+        Random random = new Random();
+        int maxValue = activityList.size();
+        int randomIndex = random.nextInt(0, maxValue );
+        return activityList.get(randomIndex);
+
+    }
 }

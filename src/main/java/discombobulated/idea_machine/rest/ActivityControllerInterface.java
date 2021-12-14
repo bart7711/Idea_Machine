@@ -29,4 +29,7 @@ public interface ActivityControllerInterface {
     @ResponseStatus(HttpStatus.NO_CONTENT)
     ActivityDTO update(@PathVariable("id") int id, @RequestBody ActivityDTO activityDTO);
 
+    @GetMapping("/filter")
+    ActivityDTO getRandomWithFilter(@RequestParam(required = false) String type,@RequestParam(required = false) Integer partMin, @RequestParam(required = false) Integer partMax,@RequestParam(required = false) String priceMin,@RequestParam(required = false) String priceMax, @RequestParam(required = false) String accessibility,@RequestParam(required = false) String duration  );
+
 }

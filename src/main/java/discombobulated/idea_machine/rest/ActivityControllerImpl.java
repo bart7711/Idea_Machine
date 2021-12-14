@@ -5,6 +5,7 @@ import discombobulated.idea_machine.dtos.converter.DTOConverter;
 import discombobulated.idea_machine.entities.Activity;
 import discombobulated.idea_machine.services.ActivityServiceInterface;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -34,9 +35,9 @@ public class ActivityControllerImpl implements ActivityControllerInterface {
     }
 
     @Override
+    @CrossOrigin
     public ActivityDTO getRandom() {
         Activity activity = activityService.getRandomActivity();
-        activityService.getImage(activity);
         return dtoConverter.convertToActivityDTO(activityService.getRandomActivity());
     }
 
@@ -53,5 +54,12 @@ public class ActivityControllerImpl implements ActivityControllerInterface {
     @Override
     public ActivityDTO update(int id, ActivityDTO activityDTO) {
         return dtoConverter.convertToActivityDTO(activityService.updateActivity(id, dtoConverter.convertToActivity(activityDTO)));
+    }
+
+    @Override
+    public ActivityDTO getRandomWithFilter(String type, Integer partMin, Integer partMax, String priceMin, String priceMax, String accessibility, String duration) {
+        Double priceMinD = Double.parseDouble(priceMin);
+        Double priceMaxD = Double.parseDouble(priceMax);
+        return dtoConverter.convertToActivityDTO(activityService.getRandomWithFilter(type,partMin,partMax,priceMinD,priceMaxD,accessibility,duration));
     }
 }
