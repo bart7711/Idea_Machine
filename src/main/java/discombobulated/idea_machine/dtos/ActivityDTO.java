@@ -12,6 +12,7 @@ import lombok.Setter;
 @AllArgsConstructor
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class ActivityDTO {
+    private int id;
     private String activity;
     double availability;
     String type;
