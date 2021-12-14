@@ -13,4 +13,5 @@ public interface ActivityServiceInterface {
     void deleteActivity(int id);
     Activity updateActivity(int id, Activity activity);
     String getImage(Activity activity);
+    Activity getRandomWithFilter(String type, Integer participantsMin, Integer participantsMax, Double priceMin, Double priceMax, String accessibility, String duration);
 }
