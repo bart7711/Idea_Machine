@@ -21,7 +21,7 @@ public class DTOConverter {
 
     public ActivityDTO convertToActivityDTO(Activity activity){
         ActivityDTO activityDTO = modelMapper.map(activity, ActivityDTO.class);
-        activityDTO.setImageUrl(activityService.getImage(activity));
+        //activityDTO.setImageUrl(activityService.getImage(activity)); commented so we dont run out of api calls
         return  activityDTO;
     }
     public Activity convertToActivity(ActivityDTO activityDTO){return modelMapper.map(activityDTO, Activity.class);}

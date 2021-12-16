@@ -25,11 +25,13 @@ public class ActivityControllerImpl implements ActivityControllerInterface {
     }
 
     @Override
+    @CrossOrigin
     public List<ActivityDTO> getAll() {
         return dtoConverter.convertToListOfProjectionDTO(activityService.getAll());
     }
 
     @Override
+    @CrossOrigin
     public ActivityDTO getById(int id) {
         return dtoConverter.convertToActivityDTO(activityService.getById(id));
     }
@@ -42,16 +44,19 @@ public class ActivityControllerImpl implements ActivityControllerInterface {
     }
 
     @Override
+    @CrossOrigin
     public ActivityDTO create(ActivityDTO activityDTO) {
         return dtoConverter.convertToActivityDTO(activityService.createActivity(dtoConverter.convertToActivity(activityDTO)));
     }
 
     @Override
+    @CrossOrigin
     public void deleteById(int id) {
         activityService.deleteActivity(id);
     }
 
     @Override
+    @CrossOrigin
     public ActivityDTO update(int id, ActivityDTO activityDTO) {
         return dtoConverter.convertToActivityDTO(activityService.updateActivity(id, dtoConverter.convertToActivity(activityDTO)));
     }
