@@ -123,11 +123,17 @@ public class ActivityServiceImpl implements ActivityServiceInterface {
         if(type != null){
             activityList.removeIf(activity -> !activity.getType().equals(type));
         }
-        if(participantsMin != null && participantsMax != null) {
-            activityList.removeIf(activity -> !(activity.getParticipants() >= participantsMin && activity.getParticipants() <= participantsMax));
+        if(participantsMax != null) {
+            activityList.removeIf(activity -> !(activity.getParticipants() <= participantsMax));
         }
-        if (priceMin != null && priceMax != null) {
-            activityList.removeIf(activity -> !(activity.getPrice() >= priceMin && activity.getPrice() <= priceMax));
+        if(participantsMin != null){
+            activityList.removeIf(activity -> !(activity.getParticipants() >= participantsMin));
+        }
+        if(priceMax != null) {
+            activityList.removeIf(activity -> !(activity.getPrice() <= priceMax));
+        }
+        if(priceMin != null){
+            activityList.removeIf(activity -> !(activity.getPrice() >= priceMin));
         }
         if(accessibility != null){
             activityList.removeIf(activity -> !activity.getAccessibility().equals(accessibility));

@@ -62,9 +62,17 @@ public class ActivityControllerImpl implements ActivityControllerInterface {
     }
 
     @Override
+    @CrossOrigin
     public ActivityDTO getRandomWithFilter(String type, Integer partMin, Integer partMax, String priceMin, String priceMax, String accessibility, String duration) {
-        Double priceMinD = Double.parseDouble(priceMin);
-        Double priceMaxD = Double.parseDouble(priceMax);
+        Double priceMinD = null;
+        Double priceMaxD = null;
+        if(priceMin != null) {
+            priceMinD = Double.parseDouble(priceMin);
+        }
+        if(priceMax != null) {
+            priceMaxD = Double.parseDouble(priceMax);
+        }
+
         return dtoConverter.convertToActivityDTO(activityService.getRandomWithFilter(type,partMin,partMax,priceMinD,priceMaxD,accessibility,duration));
     }
 }
